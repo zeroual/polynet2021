@@ -4,7 +4,7 @@ import org.polytech.polynet3.buisness.Post;
 
 import java.util.List;
 
-public interface PostRepository {
+public interface    PostRepository {
 
     Post save(Post post);
     List<Post> findAll();

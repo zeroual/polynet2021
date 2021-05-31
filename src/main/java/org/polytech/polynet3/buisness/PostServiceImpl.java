@@ -19,16 +19,19 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    @Transactional
     public void publish(String story, long userId) {
         postRepository.save(new Post(story, LocalDateTime.now(),userId));
     }
 
     @Override
+    @Transactional
     public List<Post> fetchAll() {
         return postRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void comment(Comment comment) {
         Post post = postRepository.findById(comment.getPostId());
         if (post != null) {

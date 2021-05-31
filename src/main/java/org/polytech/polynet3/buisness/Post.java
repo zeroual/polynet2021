@@ -1,19 +1,30 @@
 package org.polytech.polynet3.buisness;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "t_post")
 public class Post {
 
+    @Column(name = "id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "story")
     private String story;
 
+    @Column(name = "created_at")
     private LocalDateTime crateAt;
 
+    @Column(name = "user_id")
     private long userId;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
     private List<Comment> comments = new ArrayList<>();
 
     public Post() {
