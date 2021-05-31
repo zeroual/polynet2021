@@ -1,4 +1,4 @@
-CREATE TABLE T_POST
+CREATE TABLE t_post
 (
     id         long primary key auto_increment,
     story      varchar(250),
@@ -6,28 +6,17 @@ CREATE TABLE T_POST
     user_id    long      not null
 );
 
-CREATE TABLE T_COMMENT
+CREATE TABLE t_comment
 (
     id         long primary key auto_increment,
     comment    varchar(250),
     created_at timestamp not null,
     user_id    long      not null,
-    post_id    long,
-    constraint fk_post FOREIGN KEY (id) REFERENCES t_post (id),
-    constraint fk_user FOREIGN KEY (id) REFERENCES t_user (id)
+    post_id    long
 
 );
 
-CREATE TABLE T_LIKE
-(
-    id      long primary key auto_increment,
-    user_id long not null,
-    post_id long,
-    constraint fk_post FOREIGN KEY (id) REFERENCES t_post (id),
-    constraint fk_user FOREIGN KEY (id) REFERENCES t_user (id)
-);
-
-CREATE TABLE T_USER
+CREATE TABLE t_user
 (
     id         long primary key auto_increment,
     first_name varchar(250),
